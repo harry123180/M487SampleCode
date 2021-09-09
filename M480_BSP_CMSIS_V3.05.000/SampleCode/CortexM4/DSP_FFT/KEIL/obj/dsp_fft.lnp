@@ -1,0 +1,15 @@
+--cpu=Cortex-M4.fp.sp
+".\obj\system_m480.o"
+".\obj\startup_m480.o"
+".\obj\main.o"
+".\obj\arm_fft_bin_data.o"
+".\obj\fmc.o"
+".\obj\retarget.o"
+".\obj\uart.o"
+".\obj\clk.o"
+".\obj\sys.o"
+"..\..\..\..\Library\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"
+--library_type=microlib --ro-base 0x00000000 --entry 0x00000000 --rw-base 0x20000000 --entry Reset_Handler --first __Vectors --strict
+--map --first='startup_M480.o(RESET)' --datacompressor=off --info=inline --entry Reset_Handler --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lst\dsp_fft.map" -o .\obj\dsp_fft.axf

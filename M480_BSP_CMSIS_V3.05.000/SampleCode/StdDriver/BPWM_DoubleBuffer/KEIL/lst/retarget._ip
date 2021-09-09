@@ -1,0 +1,5 @@
+..\..\..\..\Library\StdDriver\src\retarget.c -E -c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\..\..\..\Library\Device\Nuvoton\M480\Include -I ..\..\..\..\Library\CMSIS\Include -I ..\..\..\..\Library\StdDriver\inc
+-ID:\ARM\RV31\INC
+-ID:\ARM\CMSIS\Include
+-D__UVISION_VERSION="535"
+-o .\lst\retarget.i

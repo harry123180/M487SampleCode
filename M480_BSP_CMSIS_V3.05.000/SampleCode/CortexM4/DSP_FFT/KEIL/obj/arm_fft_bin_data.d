@@ -1,0 +1,10 @@
+.\obj\arm_fft_bin_data.o: ..\arm_fft_bin_data.c
+.\obj\arm_fft_bin_data.o: ..\..\..\..\Library\CMSIS\Include\arm_math.h
+.\obj\arm_fft_bin_data.o: ..\..\..\..\Library\CMSIS\Include\core_cm4.h
+.\obj\arm_fft_bin_data.o: D:\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\arm_fft_bin_data.o: ..\..\..\..\Library\CMSIS\Include\core_cmInstr.h
+.\obj\arm_fft_bin_data.o: ..\..\..\..\Library\CMSIS\Include\cmsis_armcc.h
+.\obj\arm_fft_bin_data.o: ..\..\..\..\Library\CMSIS\Include\core_cmFunc.h
+.\obj\arm_fft_bin_data.o: ..\..\..\..\Library\CMSIS\Include\core_cmSimd.h
+.\obj\arm_fft_bin_data.o: D:\ARM\ARMCC\Bin\..\include\string.h
+.\obj\arm_fft_bin_data.o: D:\ARM\ARMCC\Bin\..\include\math.h

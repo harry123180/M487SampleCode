@@ -1,0 +1,5 @@
+-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Library\Device\Nuvoton\M480\Include -I ..\..\..\..\Library\StdDriver\inc -I ..\..\..\..\Library\CMSIS\Include
+-ID:\ARM\RV31\INC
+-ID:\ARM\CMSIS\Include
+-D__UVISION_VERSION="535" -DDEBUG_ENABLE_SEMIHOST
+-o .\obj\sys.o --omf_browse .\obj\sys.crf --depend .\obj\sys.d --feedback ".\obj\DAC_TimerTrigger.fed" "..\..\..\..\Library\StdDriver\src\sys.c"
