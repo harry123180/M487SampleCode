@@ -1,7 +1,7 @@
 /**************************************************************************//**
  * @file     i2c.c
  * @version  V3.00
- * @brief    M480 series I2C driver source file
+ * @brief    M480 series I2C driver source file«¢Åo
  *
  * @copyright (C) 2016 Nuvoton Technology Corp. All rights reserved.
  *****************************************************************************/

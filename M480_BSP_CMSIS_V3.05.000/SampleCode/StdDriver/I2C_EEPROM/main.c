@@ -25,7 +25,7 @@ typedef void (*I2C_FUNC)(uint32_t u32Status);
 static I2C_FUNC s_I2C0HandlerFn = NULL;
 
 /*---------------------------------------------------------------------------------------------------------*/
-/*  I2C0 IRQ Handler                                                                                       */
+/*  I2C0 IRQ Handler  IRQ:Interrupt Request 中斷處理器                                                                                   */
 /*---------------------------------------------------------------------------------------------------------*/
 void I2C0_IRQHandler(void)
 {

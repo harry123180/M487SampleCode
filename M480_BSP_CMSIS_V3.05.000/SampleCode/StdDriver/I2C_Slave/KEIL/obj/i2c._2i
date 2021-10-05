@@ -1,0 +1,5 @@
+-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork -I ..\..\..\..\Library\CMSIS\Include -I ..\..\..\..\Library\Device\Nuvoton\M480\Include -I ..\..\..\..\Library\StdDriver\inc
+-ID:\ARM\RV31\INC
+-ID:\ARM\CMSIS\Include
+-D__UVISION_VERSION="531"
+-o .\obj\i2c.o --omf_browse .\obj\i2c.crf --depend .\obj\i2c.d --feedback ".\obj\I2C_Slave.fed" "..\..\..\..\Library\StdDriver\src\i2c.c"

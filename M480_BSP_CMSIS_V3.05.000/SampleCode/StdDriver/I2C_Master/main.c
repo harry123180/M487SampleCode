@@ -51,6 +51,21 @@ void I2C0_IRQHandler(void)
 /*---------------------------------------------------------------------------------------------------------*/
 void I2C_MasterRx(uint32_t u32Status)
 {
+	/*
+	這個g_au8TxData 是存放DATA的陣列 大小應為8bit(待確認)
+	g_u8DataLen是用來推進DATA陣列傳送的速度 大小應為0~7
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	*/
     if (u32Status == 0x08)                      /* START has been transmitted and prepare SLA+W */
     {
         I2C_SET_DATA(I2C0, (g_u8DeviceAddr << 1)); /* Write SLA+W to Register I2CDAT */
@@ -104,22 +119,29 @@ void I2C_MasterRx(uint32_t u32Status)
 /*---------------------------------------------------------------------------------------------------------*/
 void I2C_MasterTx(uint32_t u32Status)
 {
+	/*SLA=Slave*/
+	/*W=Write
+	  R=Read
+		STA=START*/
     if (u32Status == 0x08)                      /* START has been transmitted */
     {
         I2C_SET_DATA(I2C0, g_u8DeviceAddr << 1);  /* Write SLA+W to Register I2CDAT */
         I2C_SET_CONTROL_REG(I2C0, I2C_CTL_SI);
     }
     else if (u32Status == 0x18)                 /* SLA+W has been transmitted and ACK has been received */
+			/*SLA+W ACK later*/
     {
         I2C_SET_DATA(I2C0, g_au8TxData[g_u8DataLen++]);
-        I2C_SET_CONTROL_REG(I2C0, I2C_CTL_SI);
+        I2C_SET_CONTROL_REG(I2C0, I2C_CTL_SI);//這段結果是001000
     }
     else if (u32Status == 0x20)                 /* SLA+W has been transmitted and NACK has been received */
+			/*SLA+W NACK later*/
     {
-        I2C_SET_CONTROL_REG(I2C0, I2C_CTL_STA | I2C_CTL_STO | I2C_CTL_SI);
+        I2C_SET_CONTROL_REG(I2C0, I2C_CTL_STA | I2C_CTL_STO | I2C_CTL_SI);//這段是結果是111000
     }
     else if (u32Status == 0x28)                 /* DATA has been transmitted and ACK has been received */
     {
+			/*這邊是傳完DATA並收到ACK狀態*/
         if (g_u8DataLen != 3)
         {
             I2C_SET_DATA(I2C0, g_au8TxData[g_u8DataLen++]);
@@ -199,6 +221,7 @@ void I2C0_Init(void)
 
 int32_t Read_Write_SLAVE(uint8_t slvaddr)
 {
+		//printf("無效\n");
     uint32_t i;
 
     g_u8DeviceAddr = slvaddr;
@@ -212,7 +235,7 @@ int32_t Read_Write_SLAVE(uint8_t slvaddr)
         g_u8DataLen = 0;
         g_u8EndFlag = 0;
 
-        /* I2C function to write data to slave */
+        /* I2C function to write data to slave */ 
         s_I2C0HandlerFn = (I2C_FUNC)I2C_MasterTx;
 
         /* I2C as master sends START signal */
@@ -226,7 +249,7 @@ int32_t Read_Write_SLAVE(uint8_t slvaddr)
         s_I2C0HandlerFn = (I2C_FUNC)I2C_MasterRx;
 
         g_u8DataLen = 0;
-        g_u8DeviceAddr = slvaddr;
+        g_u8DeviceAddr = slvaddr;//0x0010
 
         I2C_SET_CONTROL_REG(I2C0, I2C_CTL_STA);
 
